@@ -29,7 +29,7 @@ class Scraper:
         self.hour = float(config["HOUR"])
         self.manager = MongoManager(config=config)
 
-    def get_data(self) -> int:
+    def get_data(self) -> bool:
         return self.manager.check_and_update(requests.get(url=self.url).text)
 
 config = dict(dotenv_values(".env"))
