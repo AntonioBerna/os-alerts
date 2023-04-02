@@ -44,6 +44,10 @@ def send_start(message):
             bot.send_message(message.chat.id, text=f"Nuovi Avvisi Disponibili:\n{config['URL_2023']}")
         time.sleep(float(config["HOUR"]) * 3600)
 
+@bot.message_handler(commands=["alive"])
+def send_alive(message):
+    bot.send_message(message.chat.id, text="I'm alive!")
+
 if __name__ == "__main__":
     print("Bot running.")
     bot.polling()
