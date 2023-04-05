@@ -38,15 +38,26 @@ bot = telebot.TeleBot(token=config["TOKEN"])
 @bot.message_handler(commands=["start"])
 def send_start(message):
     bot.send_message(message.chat.id, text=f"Benvenuto {message.chat.username}!")
-    scraper = Scraper(config)
+    scraper = Scraper(config=config)
+    check_counter = 0
     while True:
         if scraper.get_data():
             bot.send_message(message.chat.id, text=f"Nuovi Avvisi Disponibili:\n{config['URL_2023']}")
+        bot.send_message(message.chat.id, text=f"Check number {check_counter}")
+        check_counter += 1
         time.sleep(float(config["HOUR"]) * 3600)
 
 @bot.message_handler(commands=["alive"])
 def send_alive(message):
     bot.send_message(message.chat.id, text="I'm alive!")
+
+@bot.message_handler(commands=["alive"])
+def send_alive(message):
+	bot.send_message(message.chat.id, text="I'm alive!")
+
+@bot.message_handler(commands=["link"])
+def send_link(message):
+	bot.send_message(message.chat.id, text=f"{config['URL_2023']}")
 
 if __name__ == "__main__":
     print("Bot running.")
