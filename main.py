@@ -17,7 +17,7 @@ def main(config):
 
     while True:
         if manager.check_and_update(scraper.get_data()):
-            bot.send_message(chat_id=config["CHAT_ID"], text=f"Nuovi Avvisi Disponibili:\n{config['URL_2023']}")
+            bot.send_message(chat_id=config["CHAT_ID"], text=f"<b>Nuovi Avvisi Disponibili:</b>\n{config['URL_2023']}")
         time.sleep(float(config["HOUR"]) * 3600)
 
 if __name__ == "__main__":
