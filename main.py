@@ -6,6 +6,10 @@ from scraper import Scraper
 from telegram import Telegram
 from manager import MongoManager
 
+def update_log(e: Exception):
+    with open("log.txt", "a") as f:
+        f.write(f"{e}\n")
+
 def main(config):
     scraper = Scraper(config=config)
     bot = Telegram(config=config)
@@ -24,5 +28,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nExiting...")
     except Exception as e:
-        # TODO: write a log file
-        pass
+        update_log(e)    
