@@ -28,4 +28,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nExiting...")
     except Exception as e:
-        update_log(e)    
+        update_log(e)
+        print("\nlog.txt has been updated.")
