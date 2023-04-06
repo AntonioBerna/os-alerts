@@ -51,10 +51,6 @@ def send_start(message):
 def send_alive(message):
     bot.send_message(message.chat.id, text="I'm alive!")
 
-@bot.message_handler(commands=["alive"])
-def send_alive(message):
-	bot.send_message(message.chat.id, text="I'm alive!")
-
 @bot.message_handler(commands=["link"])
 def send_link(message):
 	bot.send_message(message.chat.id, text=f"{config['URL_2023']}")
