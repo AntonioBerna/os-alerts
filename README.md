@@ -24,13 +24,13 @@ or you can configure the ```config.json``` file as follows:
 
 ```shell
 {
-	"USERNAME": "",
-	"PASSWORD": "",
-	"CLUSTER": "",
-	"SESSION": "",
-	"URL_2023": "",
-	"HOUR": "",
-	"TOKEN": "",
+    "USERNAME": "",
+    "PASSWORD": "",
+    "CLUSTER": "",
+    "SESSION": "",
+    "URL_2023": "",
+    "HOUR": "",
+    "TOKEN": "",
     "CHAT_ID": ""
 }
 ```
