@@ -21,9 +21,18 @@ def main(config):
         time.sleep(float(config["HOUR"]) * 3600)
 
 if __name__ == "__main__":
-    config = dict(dotenv_values(".env"))
+    config_mode = False
+    if config_mode:
+        from dotenv import dotenv_values
+        config = dict(dotenv_values(".env"))
+    else:
+        import json
+        config = json.load(open("config.json"))
+    
     try:
         print("Bot running.")
+        from keep_alive import keep_alive
+        keep_alive()
         main(config)
     except KeyboardInterrupt:
         print("\nExiting...")
