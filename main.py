@@ -1,10 +1,8 @@
 from dotenv import dotenv_values
-import argparse
-import time
-
-# my libraries
 from telegram import Telegram
 from scraper import Scraper
+import argparse
+import time
 
 def main(config, manager):
     scraper = Scraper(config=config)
