@@ -7,6 +7,11 @@ class Telegram:
         
     def send_message(self, chat_id: str, text: str) -> None:
         payload = {"chat_id": chat_id, "parse_mode": "HTML", "text": text}
-        requests.get(f"{self.api_url}/sendMessage", params=payload)
+        try:
+            requests.get(f"{self.api_url}/sendMessage", params=payload)
+        except Exception as e:
+            from errors import Errors
+            errors = Errors()
+            errors.save("telegram.py", e)
 
 

@@ -40,5 +40,6 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nExiting...")
     except Exception as e:
-        print(f"\n{e}")
-
+        from errors import Errors
+        errors = Errors()
+        errors.save("main.py", e)

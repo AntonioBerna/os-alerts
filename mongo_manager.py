@@ -6,9 +6,14 @@ class MongoManager:
         self.password = config["PASSWORD"]
         self.cluster = config["CLUSTER"]
         self.session = config["SESSION"]
-        
-        self.link = f"mongodb+srv://{self.username}:{self.password}@{self.cluster}.{self.session}.mongodb.net/?retryWrites=true&w=majority"
-        self.client = pymongo.MongoClient(self.link)
+
+        try:
+            self.link = f"mongodb+srv://{self.username}:{self.password}@{self.cluster}.{self.session}.mongodb.net/?retryWrites=true&w=majority"
+            self.client = pymongo.MongoClient(self.link)
+        except Exception as e:
+            from errors import Errors
+            errors = Errors()
+            errors.save("mongo_manager.py", e)
 
     def get_database_list(self) -> list[str]:
         return self.client.list_database_names()

@@ -6,4 +6,9 @@ class Scraper:
         self.hour = float(config["HOUR"])
 
     def get_data(self) -> str:
-        return requests.get(url=self.url).text
+        try:
+            return requests.get(url=self.url).text
+        except Exception as e:
+            from errors import Errors
+            errors = Errors()
+            errors.save("scraper.py", e)
