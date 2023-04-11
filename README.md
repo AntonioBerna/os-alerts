@@ -20,24 +20,7 @@ export TOKEN=""
 export CHAT_ID=""
 ```
 
-or you can configure the ```config.json``` file as follows:
-
-```shell
-{
-    "USERNAME": "",
-    "PASSWORD": "",
-    "CLUSTER": "",
-    "SESSION": "",
-    "URL_2023": "",
-    "HOUR": "",
-    "TOKEN": "",
-    "CHAT_ID": ""
-}
-```
-
 >**NOTE:** You need to have an active **mongo** database.
-
->**NOTE:** Remember to change the value of the ```config_mode``` variable according to the type of mode you choose to use!
 
 # Links
 Telegram Bot Link: https://t.me/CleverCodeBot
