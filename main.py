@@ -1,15 +1,14 @@
 from dotenv import dotenv_values
+import argparse
 import time
 
 # my libraries
-from scraper import Scraper
 from telegram import Telegram
-from manager import MongoManager
+from scraper import Scraper
 
-def main(config):
+def main(config, manager):
     scraper = Scraper(config=config)
     bot = Telegram(config=config)
-    manager = MongoManager(config=config)
 
     while True:
         if manager.check_and_update(scraper.get_data()):
@@ -17,19 +16,27 @@ def main(config):
         time.sleep(float(config["HOUR"]) * 3600)
 
 if __name__ == "__main__":
-    config_mode = False
-    if config_mode:
-        from dotenv import dotenv_values
-        config = dict(dotenv_values(".env"))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--env", dest="env", help="set environment variables with .env file")
+    parser.add_argument("--mongo", dest="mongo", help="use mongo database")
+    parser.set_defaults(mongo=False)
+
+    args = parser.parse_args()
+    # print(args)
+    
+    if args.env is not None:
+        config = dict(dotenv_values(args.env))
+    
+    if args.mongo:
+        from mongo_manager import MongoManager
+        manager = MongoManager(config=config)
     else:
-        import json
-        config = json.load(open("config.json"))
+        from file_manager import FileManager
+        manager = FileManager()
     
     try:
         print("Bot running.")
-        from keep_alive import keep_alive
-        keep_alive()
-        main(config)
+        main(config, manager)
     except KeyboardInterrupt:
         print("\nExiting...")
     except Exception as e:
