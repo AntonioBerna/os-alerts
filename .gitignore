@@ -1,5 +1,6 @@
 .DS_Store
 .env
 database
+log.txt
 .vscode/
 __pycache__/
