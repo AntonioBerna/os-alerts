@@ -1,4 +1,5 @@
 import requests
+import os
 
 class Scraper:
     def __init__(self, config: dict) -> None:
@@ -11,4 +12,4 @@ class Scraper:
         except Exception as e:
             from errors import Errors
             errors = Errors()
-            errors.save("scraper.py", e)
+            errors.save(os.path.basename(__file__), e)

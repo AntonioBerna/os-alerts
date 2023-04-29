@@ -1,4 +1,5 @@
 import requests
+import os
 
 class Telegram:
     def __init__(self, config: dict) -> None:
@@ -12,6 +13,6 @@ class Telegram:
         except Exception as e:
             from errors import Errors
             errors = Errors()
-            errors.save("telegram.py", e)
+            errors.save(os.path.basename(__file__), e)
 
 

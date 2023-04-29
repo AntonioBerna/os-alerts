@@ -1,7 +1,7 @@
 from dotenv import dotenv_values
 from telegram import Telegram
 from scraper import Scraper
-import argparse
+# import argparse
 import time
 
 def main(config, manager):
@@ -14,23 +14,25 @@ def main(config, manager):
         time.sleep(float(config["HOUR"]) * 3600)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--env", dest="env", help="set environment variables with .env file")
-    parser.add_argument("--mongo", dest="mongo", help="use mongo database")
-    parser.set_defaults(mongo=False)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("--env", dest="env", help="set environment variables with .env file")
+    # parser.add_argument("--mongo", dest="mongo", help="use mongo database")
+    # parser.set_defaults(mongo=False)
 
-    args = parser.parse_args()
+    # args = parser.parse_args()
     # print(args)
     
-    if args.env is not None:
-        config = dict(dotenv_values(args.env))
+    # if args.env is not None:
+    #     config = dict(dotenv_values(args.env))
     
-    if args.mongo:
-        from mongo_manager import MongoManager
-        manager = MongoManager(config=config)
-    else:
-        from file_manager import FileManager
-        manager = FileManager()
+    config = dict(dotenv_values(".env"))
+    
+    # if args.mongo:
+    #     from mongo_manager import MongoManager
+    #     manager = MongoManager(config=config)
+    # else:
+    from file_manager import FileManager
+    manager = FileManager()
     
     try:
         print("Bot running.")

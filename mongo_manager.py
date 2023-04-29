@@ -1,4 +1,5 @@
 import pymongo
+import os
 
 class MongoManager:
     def __init__(self, config: dict) -> None:
@@ -13,7 +14,7 @@ class MongoManager:
         except Exception as e:
             from errors import Errors
             errors = Errors()
-            errors.save("mongo_manager.py", e)
+            errors.save(os.path.basename(__file__), e)
 
     def get_database_list(self) -> list[str]:
         return self.client.list_database_names()
