@@ -4,8 +4,9 @@ class FileManager:
 
     def check_and_update(self, html: str) -> bool:
         data = str(len(html))
-        with open(self.database, "w+") as file:
-            if file.readline() == data:
-                return False
+        with open(self.database, "r+") as file:
+            if file.read().strip() == data: return False
+            file.seek(0)
             file.write(data)
+            file.truncate()
         return True
