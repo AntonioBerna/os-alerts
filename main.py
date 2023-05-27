@@ -3,6 +3,7 @@ from telegram import Telegram
 from scraper import Scraper
 # import argparse
 import time
+import os
 
 def main(config, manager):
     scraper = Scraper(config=config)
@@ -42,4 +43,4 @@ if __name__ == "__main__":
     except Exception as e:
         from errors import Errors
         errors = Errors()
-        errors.save("main.py", e)
+        errors.save(os.path.basename(__file__), e)
