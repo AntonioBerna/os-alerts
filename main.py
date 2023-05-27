@@ -2,6 +2,7 @@ from dotenv import dotenv_values
 from telegram import Telegram
 from scraper import Scraper
 # import argparse
+import threading
 import time
 import os
 
@@ -37,7 +38,9 @@ if __name__ == "__main__":
     
     try:
         print("Bot running.")
-        main(config, manager)
+        main_thread = threading.Thread(target=main, args=(config, manager,))
+        main_thread.start()
+        main_thread.join()
     except KeyboardInterrupt:
         print("\nExiting...")
     except Exception as e:
