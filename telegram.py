@@ -14,5 +14,3 @@ class Telegram:
             from errors import Errors
             errors = Errors()
             errors.save(os.path.basename(__file__), e)
-
-
