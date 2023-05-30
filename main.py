@@ -1,7 +1,6 @@
 from dotenv import dotenv_values
 from telegram import Telegram
 from scraper import Scraper
-# import argparse
 import threading
 import time
 import os
@@ -16,6 +15,7 @@ def main(config, manager):
         time.sleep(float(config["HOUR"]) * 3600)
 
 if __name__ == "__main__":
+    # import argparse
     # parser = argparse.ArgumentParser()
     # parser.add_argument("--env", dest="env", help="set environment variables with .env file")
     # parser.add_argument("--mongo", dest="mongo", help="use mongo database")
