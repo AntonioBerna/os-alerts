@@ -4,6 +4,7 @@ from scraper import Scraper
 import threading
 import time
 import os
+import sys
 
 def main(config, manager):
     scraper = Scraper(config=config)
@@ -43,6 +44,7 @@ if __name__ == "__main__":
         main_thread.join()
     except KeyboardInterrupt:
         print("\nExiting...")
+        sys.exit()
     except Exception as e:
         from errors import Errors
         errors = Errors()
