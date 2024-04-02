@@ -1,3 +1,5 @@
+# FIXME: change the mongodb logic...
+
 import pymongo
 import os
 
@@ -12,9 +14,10 @@ class MongoManager:
             self.link = f"mongodb+srv://{self.username}:{self.password}@{self.cluster}.{self.session}.mongodb.net/?retryWrites=true&w=majority"
             self.client = pymongo.MongoClient(self.link)
         except Exception as e:
-            from errors import Errors
-            errors = Errors()
-            errors.save(os.path.basename(__file__), e)
+            # from errors import Errors
+            # errors = Errors()
+            # errors.save(os.path.basename(__file__), e)
+            ...
 
     def get_database_list(self) -> list[str]:
         return self.client.list_database_names()
