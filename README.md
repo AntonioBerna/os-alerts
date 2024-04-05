@@ -5,6 +5,11 @@ Simple Telegram Web Scraping App for get information from any website.
 > [!NOTE]
 > Initially this application was created with the aim of monitoring the website of Professor Francesco Quaglia, university professor of the operating systems (and advanced operating systems) course at the University of Rome Tor Vergata. Today this project has grown into a larger application that can monitor multiple websites at the same time.
 
+## todo
+
+- [ ] Add mongodb support
+- [ ] Add postgreSQL support
+
 ## Simple docs
 Clone the repository using the following command:
 
@@ -70,4 +75,5 @@ Bot running.
 > If you do not have the necessary permissions to run the `run.sh` file you can use the `chmod +x run.sh` command and the `./run.sh` command again.
 
 ## Links
+
 Telegram Bot Link: https://t.me/CleverCodeBot
